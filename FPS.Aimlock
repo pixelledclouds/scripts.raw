@@ -1,0 +1,373 @@
+local espcolor = Color3.fromRGB(140, 69, 102)
+local wallhack_esp_transparency = .4
+local gui_hide_button = {Enum.KeyCode.LeftControl, "h"}
+local plrs = game:GetService("Players")
+local lplr = game:GetService("Players").LocalPlayer
+local TeamBased = true ; local teambasedswitch = "o"
+local presskeytoaim = true; local aimkey = "e"
+aimbothider = false; aimbothiderspeed = .5
+local Aim_Assist = false ; Aim_Assist_Key = {Enum.KeyCode.LeftControl, "z"}
+local espupdatetime = 5; autoesp = false
+local abs = math.abs
+local mouselock = false
+local canaimat = true
+local lockaim = true; local lockangle = 5
+local ver = "2"
+local cam = game.Workspace.CurrentCamera
+local BetterDeathCount = true
+
+
+local mouse = lplr:GetMouse()
+local switch = false
+local key = "k"
+local aimatpart = nil
+
+local CCAimbot = Instance.new("ScreenGui")
+local AimbotFrame = Instance.new("Frame")
+local MainAimbotFrame = Instance.new("Frame")
+local N2 = Instance.new("Frame")
+local CheatType = Instance.new("TextLabel")
+local N2_2 = Instance.new("Frame")
+local CheatType_2 = Instance.new("TextLabel")
+local N1 = Instance.new("Frame")
+local CheatType_3 = Instance.new("TextLabel")
+local C5 = Instance.new("Frame")
+local Letters = Instance.new("TextLabel")
+local CheatType_4 = Instance.new("TextLabel")
+local C4 = Instance.new("Frame")
+local Letters_2 = Instance.new("TextLabel")
+local CheatType_5 = Instance.new("TextLabel")
+local C3 = Instance.new("Frame")
+local Letters_3 = Instance.new("TextLabel")
+local CheatType_6 = Instance.new("TextLabel")
+local C2 = Instance.new("Frame")
+local Letters_4 = Instance.new("TextLabel")
+local CheatType_7 = Instance.new("TextLabel")
+local C1 = Instance.new("Frame")
+local Letters_5 = Instance.new("TextLabel")
+local CheatType_8 = Instance.new("TextLabel")
+local TabFrame = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Exit = Instance.new("TextButton")
+local Hide = Instance.new("TextButton")
+
+--Properties:
+
+CCAimbot.Name = "CCAimbot"
+CCAimbot.Parent = game.CoreGui
+
+AimbotFrame.Name = "AimbotFrame"
+AimbotFrame.Parent = CCAimbot
+AimbotFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+AimbotFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AimbotFrame.BackgroundTransparency = 1.000
+AimbotFrame.BorderSizePixel = 0
+AimbotFrame.ClipsDescendants = true
+AimbotFrame.Position = UDim2.new(0.5, 0, 0.479495257, 0)
+AimbotFrame.Size = UDim2.new(0, 195, 0, 259)
+
+MainAimbotFrame.Name = "MainAimbotFrame"
+MainAimbotFrame.Parent = AimbotFrame
+MainAimbotFrame.BackgroundColor3 = Color3.fromRGB(23, 24, 28)
+MainAimbotFrame.BorderSizePixel = 0
+MainAimbotFrame.ClipsDescendants = true
+MainAimbotFrame.Position = UDim2.new(-0.00256413221, 0, 0.0464286208, 0)
+MainAimbotFrame.Size = UDim2.new(0, 195, 0, 245)
+
+N2.Name = "N2"
+N2.Parent = MainAimbotFrame
+N2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+N2.BackgroundTransparency = 1.000
+N2.BorderSizePixel = 0
+N2.Position = UDim2.new(0, 0, 0.562231719, 0)
+N2.Size = UDim2.new(1, 0, 0.100000001, 0)
+
+CheatType.Name = "CheatType"
+CheatType.Parent = N2
+CheatType.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CheatType.BackgroundTransparency = 1.000
+CheatType.BorderSizePixel = 0
+CheatType.Position = UDim2.new(0, 0, 2.03163123, 0)
+CheatType.Size = UDim2.new(1, 0, 1.05753362, 0)
+CheatType.Font = Enum.Font.GothamBlack
+CheatType.Text = "ESP Loop : False"
+CheatType.TextColor3 = Color3.fromRGB(255, 255, 255)
+CheatType.TextSize = 15.000
+CheatType.TextWrapped = true
+
+N2_2.Name = "N2"
+N2_2.Parent = MainAimbotFrame
+N2_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+N2_2.BackgroundTransparency = 1.000
+N2_2.BorderSizePixel = 0
+N2_2.Position = UDim2.new(0, 0, 0.935622334, 0)
+N2_2.Size = UDim2.new(1, 0, 0.0613734461, 0)
+
+CheatType_2.Name = "CheatType"
+CheatType_2.Parent = N2_2
+CheatType_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_2.BackgroundTransparency = 1.000
+CheatType_2.BorderSizePixel = 0
+CheatType_2.Size = UDim2.new(1, 0, 1, 0)
+CheatType_2.Font = Enum.Font.Gotham
+CheatType_2.Text = "Letters Corrospond with Keybinds"
+CheatType_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_2.TextScaled = true
+CheatType_2.TextSize = 15.000
+CheatType_2.TextWrapped = true
+
+N1.Name = "N1"
+N1.Parent = MainAimbotFrame
+N1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+N1.BackgroundTransparency = 1.000
+N1.BorderSizePixel = 0
+N1.Position = UDim2.new(0, 0, 0.562231719, 0)
+N1.Size = UDim2.new(1, 0, 0.100000001, 0)
+
+CheatType_3.Name = "CheatType"
+CheatType_3.Parent = N1
+CheatType_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_3.BackgroundTransparency = 1.000
+CheatType_3.BorderSizePixel = 0
+CheatType_3.Position = UDim2.new(0, 0, 0.987714529, 0)
+CheatType_3.Size = UDim2.new(1, 0, 1.05753362, 0)
+CheatType_3.Font = Enum.Font.GothamBlack
+CheatType_3.Text = "Team Based : True"
+CheatType_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_3.TextSize = 15.000
+CheatType_3.TextWrapped = true
+
+C5.Name = "C5"
+C5.Parent = MainAimbotFrame
+C5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+C5.BackgroundTransparency = 1.000
+C5.BorderSizePixel = 0
+C5.Position = UDim2.new(-0.00512820529, 0, 0.459227443, 0)
+C5.Size = UDim2.new(1, 0, 0.100000001, 0)
+
+Letters.Name = "Letters"
+Letters.Parent = C5
+Letters.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Letters.BackgroundTransparency = 1.000
+Letters.BorderSizePixel = 0
+Letters.Position = UDim2.new(0.730999887, 0, 0.973926187, 0)
+Letters.Size = UDim2.new(0.263999999, 0, 1.05753362, 0)
+Letters.Font = Enum.Font.GothamBold
+Letters.Text = "O"
+Letters.TextColor3 = Color3.fromRGB(255, 255, 255)
+Letters.TextSize = 15.000
+Letters.TextWrapped = true
+
+CheatType_4.Name = "CheatType"
+CheatType_4.Parent = C5
+CheatType_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_4.BackgroundTransparency = 1.000
+CheatType_4.BorderSizePixel = 0
+CheatType_4.Position = UDim2.new(0.0307692308, 0, 0.97837925, 0)
+CheatType_4.Size = UDim2.new(0.699999988, 0, 1.05753362, 0)
+CheatType_4.Font = Enum.Font.GothamBold
+CheatType_4.Text = "Team Based"
+CheatType_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_4.TextSize = 15.000
+CheatType_4.TextWrapped = true
+CheatType_4.TextXAlignment = Enum.TextXAlignment.Left
+
+C4.Name = "C4"
+C4.Parent = MainAimbotFrame
+C4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+C4.BackgroundTransparency = 1.000
+C4.BorderSizePixel = 0
+C4.Position = UDim2.new(0, 0, 0.356223166, 0)
+C4.Size = UDim2.new(1, 0, 0.100000001, 0)
+
+Letters_2.Name = "Letters"
+Letters_2.Parent = C4
+Letters_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Letters_2.BackgroundTransparency = 1.000
+Letters_2.BorderSizePixel = 0
+Letters_2.Position = UDim2.new(0.730999887, 0, 0.914663553, 0)
+Letters_2.Size = UDim2.new(0.263999999, 0, 1.05753362, 0)
+Letters_2.Font = Enum.Font.GothamBold
+Letters_2.Text = "Y"
+Letters_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Letters_2.TextSize = 15.000
+Letters_2.TextWrapped = true
+
+CheatType_5.Name = "CheatType"
+CheatType_5.Parent = C4
+CheatType_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_5.BackgroundTransparency = 1.000
+CheatType_5.BorderSizePixel = 0
+CheatType_5.Position = UDim2.new(0.0307692308, 0, 0.919116616, 0)
+CheatType_5.Size = UDim2.new(0.699999988, 0, 1.05753362, 0)
+CheatType_5.Font = Enum.Font.GothamBold
+CheatType_5.Text = "Aimbot Hider"
+CheatType_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_5.TextSize = 15.000
+CheatType_5.TextWrapped = true
+CheatType_5.TextXAlignment = Enum.TextXAlignment.Left
+
+C3.Name = "C3"
+C3.Parent = MainAimbotFrame
+C3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+C3.BackgroundTransparency = 1.000
+C3.BorderSizePixel = 0
+C3.Position = UDim2.new(0, 0, 0.253218889, 0)
+C3.Size = UDim2.new(1, 0, 0.100000001, 0)
+
+Letters_3.Name = "Letters"
+Letters_3.Parent = C3
+Letters_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Letters_3.BackgroundTransparency = 1.000
+Letters_3.BorderSizePixel = 0
+Letters_3.Position = UDim2.new(0.730999887, 0, 0.855401516, 0)
+Letters_3.Size = UDim2.new(0.263999999, 0, 1.05753362, 0)
+Letters_3.Font = Enum.Font.GothamBold
+Letters_3.Text = "L"
+Letters_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+Letters_3.TextSize = 15.000
+Letters_3.TextWrapped = true
+
+CheatType_6.Name = "CheatType"
+CheatType_6.Parent = C3
+CheatType_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_6.BackgroundTransparency = 1.000
+CheatType_6.BorderSizePixel = 0
+CheatType_6.Position = UDim2.new(0.0307692308, 0, 0.859854579, 0)
+CheatType_6.Size = UDim2.new(0.699999988, 0, 1.05753362, 0)
+CheatType_6.Font = Enum.Font.GothamBold
+CheatType_6.Text = "ESP Loop"
+CheatType_6.TextColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_6.TextSize = 15.000
+CheatType_6.TextWrapped = true
+CheatType_6.TextXAlignment = Enum.TextXAlignment.Left
+
+C2.Name = "C2"
+C2.Parent = MainAimbotFrame
+C2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+C2.BackgroundTransparency = 1.000
+C2.BorderSizePixel = 0
+C2.Position = UDim2.new(0, 0, 0.150214598, 0)
+C2.Size = UDim2.new(1, 0, 0.100000001, 0)
+
+Letters_4.Name = "Letters"
+Letters_4.Parent = C2
+Letters_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Letters_4.BackgroundTransparency = 1.000
+Letters_4.BorderSizePixel = 0
+Letters_4.Position = UDim2.new(0.730999887, 0, 0.796139479, 0)
+Letters_4.Size = UDim2.new(0.263999999, 0, 1.05753362, 0)
+Letters_4.Font = Enum.Font.GothamBold
+Letters_4.Text = "T"
+Letters_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+Letters_4.TextSize = 15.000
+Letters_4.TextWrapped = true
+
+CheatType_7.Name = "CheatType"
+CheatType_7.Parent = C2
+CheatType_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_7.BackgroundTransparency = 1.000
+CheatType_7.BorderSizePixel = 0
+CheatType_7.Position = UDim2.new(0.0307692308, 0, 0.800592542, 0)
+CheatType_7.Size = UDim2.new(0.699999988, 0, 1.05753362, 0)
+CheatType_7.Font = Enum.Font.GothamBold
+CheatType_7.Text = "ESP"
+CheatType_7.TextColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_7.TextSize = 15.000
+CheatType_7.TextWrapped = true
+CheatType_7.TextXAlignment = Enum.TextXAlignment.Left
+
+C1.Name = "C1"
+C1.Parent = MainAimbotFrame
+C1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+C1.BackgroundTransparency = 1.000
+C1.BorderSizePixel = 0
+C1.Position = UDim2.new(0, 0, 0.0472103022, 0)
+C1.Size = UDim2.new(1, 0, 0.100000001, 0)
+
+Letters_5.Name = "Letters"
+Letters_5.Parent = C1
+Letters_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Letters_5.BackgroundTransparency = 1.000
+Letters_5.BorderSizePixel = 0
+Letters_5.Position = UDim2.new(0.730999887, 0, 0.736877441, 0)
+Letters_5.Size = UDim2.new(0.263999999, 0, 1.05753362, 0)
+Letters_5.Font = Enum.Font.GothamBold
+Letters_5.Text = "E"
+Letters_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+Letters_5.TextSize = 15.000
+Letters_5.TextWrapped = true
+
+CheatType_8.Name = "CheatType"
+CheatType_8.Parent = C1
+CheatType_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_8.BackgroundTransparency = 1.000
+CheatType_8.BorderSizePixel = 0
+CheatType_8.Position = UDim2.new(0.0307692308, 0, 0.741330564, 0)
+CheatType_8.Size = UDim2.new(0.699999988, 0, 1.05753362, 0)
+CheatType_8.Font = Enum.Font.GothamBold
+CheatType_8.Text = "Lock-in Person"
+CheatType_8.TextColor3 = Color3.fromRGB(255, 255, 255)
+CheatType_8.TextSize = 15.000
+CheatType_8.TextWrapped = true
+CheatType_8.TextXAlignment = Enum.TextXAlignment.Left
+
+TabFrame.Name = "TabFrame"
+TabFrame.Parent = AimbotFrame
+TabFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+TabFrame.BackgroundColor3 = Color3.fromRGB(0, 237, 206)
+TabFrame.BorderSizePixel = 0
+TabFrame.ClipsDescendants = true
+TabFrame.Position = UDim2.new(0.497435898, 0, 0.0926640928, 0)
+TabFrame.Size = UDim2.new(1, 0, 0.100000001, 0)
+
+Title.Name = "Title"
+Title.Parent = TabFrame
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0.0307692308, 0, 0, 0)
+Title.Size = UDim2.new(0.41538462, 0, 1, 0)
+Title.Font = Enum.Font.GothamBold
+Title.Text = "CC AIMBOT"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 14.000
+Title.TextXAlignment = Enum.TextXAlignment.Left
+
+Exit.Name = "Exit"
+Exit.Parent = TabFrame
+Exit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Exit.BackgroundTransparency = 1.000
+Exit.BorderSizePixel = 0
+Exit.Position = UDim2.new(0.899999976, 0, 0, 0)
+Exit.Size = UDim2.new(0.100000001, 0, 1, 0)
+Exit.Font = Enum.Font.GothamBold
+Exit.Text = "X"
+Exit.TextColor3 = Color3.fromRGB(255, 255, 255)
+Exit.TextScaled = true
+Exit.TextSize = 14.000
+Exit.TextWrapped = true
+
+Hide.Name = "Hide"
+Hide.Parent = TabFrame
+Hide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Hide.BackgroundTransparency = 1.000
+Hide.BorderSizePixel = 0
+Hide.Position = UDim2.new(0.79743588, 0, 0, 0)
+Hide.Size = UDim2.new(0.100000001, 0, 1, 0)
+Hide.Font = Enum.Font.GothamBold
+Hide.Text = "-"
+Hide.TextColor3 = Color3.fromRGB(255, 255, 255)
+Hide.TextScaled = true
+Hide.TextSize = 14.000
+Hide.TextWrapped = true
+
+-- Scripts:
+
+local function JLYIY_fake_script() -- Exit.LocalScript 
+    local script = Instance.new('LocalScript', Exit)
+
+    local b = script.Parent
+    
+    b.MouseButton1Down:connect(function()
+        b
